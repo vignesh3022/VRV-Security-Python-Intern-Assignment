@@ -25,6 +25,28 @@ The system generates three types of analysis:
 2. **Popular Endpoints**: Identifies most accessed URLs/endpoints
 3. **Security Alerts**: Flags IPs with suspicious activity (e.g., multiple failed logins)
 
+## Setup and Installation
+
+### Prerequisites
+- Python 3.6 or higher
+- Git (optional, for cloning)
+
+### Installation Steps
+1. **Get the Code**:
+   ```
+   # Option 1: Clone with Git
+   git clone https://github.com/vignesh3022/VRV-Security-s-Python-Intern-Assignment.git
+   cd log-analysis-system
+
+   # Option 2: Download ZIP
+   # Download and extract the ZIP file from the repository
+   ```
+
+2. **Install Dependencies**:
+   ```
+   pip install prettytable
+   ```
+
 ## How to Use
 
 ### Input
