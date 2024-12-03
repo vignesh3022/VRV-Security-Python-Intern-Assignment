@@ -12,9 +12,9 @@ IP Address,Request Count
 192.168.2.10,1
 198.51.100.25,1
 
-Most Accessed Endpoint,Access Count
+Most Frequently Accessed Endpoint:,Access Count
 /login,16
 
 Suspicious Activity Detected
-IP Address,Failed Login Count
+IP Address,Failed Login Attempts
 203.0.113.5,8

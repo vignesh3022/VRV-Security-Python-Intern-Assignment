@@ -20,8 +20,7 @@ FAILED_LOGIN_THRESHOLD = 5
 
 def parse_log_file(file_path):
     """
-    Parse web server logs into structured data.
-
+    It parses web server logs into structured data.
     Args:
         file_path: Path to log file
     Returns:
@@ -41,7 +40,7 @@ def parse_log_file(file_path):
 
 def analyze_requests_per_ip(log_data):
     """
-    Count requests from each IP address.
+    It counts requests from each IP address.
 
     Args:
         log_data: Parsed log entries
@@ -53,7 +52,7 @@ def analyze_requests_per_ip(log_data):
 
 def analyze_most_accessed_endpoint(log_data):
     """
-    Find the most frequently accessed endpoint.
+    It finds the most frequently accessed endpoint.
 
     Args:
         log_data: Parsed log entries
@@ -66,7 +65,7 @@ def analyze_most_accessed_endpoint(log_data):
 
 def detect_suspicious_activity(log_data, threshold=FAILED_LOGIN_THRESHOLD):
     """
-    Identify IPs with excessive failed logins.
+    It identifies IPs with excessive failed logins.
 
     Args:
         log_data: Parsed log entries
@@ -82,7 +81,7 @@ def detect_suspicious_activity(log_data, threshold=FAILED_LOGIN_THRESHOLD):
 
 def save_to_csv(ip_requests, most_accessed_endpoint, suspicious_activity, output_path):
     """
-    Export results to CSV format.
+    It exports results to CSV format.
 
     Args:
         ip_requests: IP traffic data
@@ -98,22 +97,22 @@ def save_to_csv(ip_requests, most_accessed_endpoint, suspicious_activity, output
         for ip, count in ip_requests:
             writer.writerow([ip, count])
         
-        # Write most accessed endpoint
+        # Write Most Frequently Accessed Endpoint:
         writer.writerow([])
-        writer.writerow(["Most Accessed Endpoint", "Access Count"])
+        writer.writerow(["Most Frequently Accessed Endpoint:", "Access Count"])
         if most_accessed_endpoint:
             writer.writerow(most_accessed_endpoint)
         
         # Write suspicious activity
         writer.writerow([])
         writer.writerow(["Suspicious Activity Detected"])
-        writer.writerow(["IP Address", "Failed Login Count"])
+        writer.writerow(["IP Address", "Failed Login Attempts"])
         for ip, count in suspicious_activity.items():
             writer.writerow([ip, count])
 
 def save_to_html(ip_requests, most_accessed_endpoint, suspicious_activity, output_path):
     """
-    Generate interactive HTML report.
+    It generates interactive HTML report.
 
     Args:
         ip_requests: IP traffic data
@@ -182,9 +181,9 @@ def save_to_html(ip_requests, most_accessed_endpoint, suspicious_activity, outpu
             html_file.write(f"      <tr><td>{ip}</td><td>{count}</td></tr>\n")
         html_file.write("""
     </table>
-    <h2>Most Accessed Endpoint</h2>
+    <h2>Most Frequently Accessed Endpoint</h2>
 """)
-        # Add Most Accessed Endpoint
+        # Add Most Frequently Accessed Endpoint:
         if most_accessed_endpoint:
             html_file.write(f"    <p>{most_accessed_endpoint[0]} (Accessed {most_accessed_endpoint[1]} times)</p>\n")
         else:
@@ -196,7 +195,7 @@ def save_to_html(ip_requests, most_accessed_endpoint, suspicious_activity, outpu
     <table>
       <tr>
         <th>IP Address</th>
-        <th>Failed Login Count</th>
+        <th>Failed Login Attempts</th>
       </tr>
 """)
         if suspicious_activity:
@@ -234,7 +233,7 @@ def display_results(ip_requests, most_accessed_endpoint, suspicious_activity):
     
     print("\n=== Suspicious Activity Detected ===")
     if suspicious_activity:
-        suspicious_table = PrettyTable(["IP Address", "Failed Login Count"])
+        suspicious_table = PrettyTable(["IP Address", "Failed Login Attempts"])
         for ip, count in suspicious_activity.items():
             suspicious_table.add_row([ip, count])
         print(suspicious_table)
